@@ -1,4 +1,5 @@
 .yarn
-db\db.db
+db/db.db
 .pnp.js
+.yarnrc.yml
 yarn.lock

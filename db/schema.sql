@@ -1,4 +1,4 @@
-create table usuario (
+create table if not exists usuario (
     id integer primary key,
     nome text,
     cpf text,
@@ -13,19 +13,19 @@ create table usuario (
     senha text
 );
 
-create table tecnico (
+create table if not exists tecnico (
     id integer primary key,
     ano_formatura integer,
     tipo_registro text,
     registro_profissional text
 );
 
-create table proprietario (
+create table if not exists proprietario (
     id integer primary key,
     cnpj text
 );
 
-create table propriedade (
+create table if not exists propriedade (
     id integer primary key,
     proprietario integer,
     nome text,
@@ -36,7 +36,7 @@ create table propriedade (
     foreign key (proprietario) references proprietario(id)
 );
 
-create table propriedade_tecnico (
+create table if not exists propriedade_tecnico (
     id integer primary key,
     propriedade integer,
     tecnico integer,
@@ -44,7 +44,7 @@ create table propriedade_tecnico (
     foreign key (tecnico) references tecnico(id)
 );
 
-create table info_propriedade (
+create table if not exists info_propriedade (
     id integer primary key,
     propriedade_tecnico integer,
     insercao integer,
@@ -61,13 +61,13 @@ create table info_propriedade (
     foreign key (propriedade_tecnico) references propriedade_tecnico(id)
 );
 
-create table tipo_forragem (
+create table if not exists tipo_forragem (
     id integer primary key,
     nome text,
     tipo text
 );
 
-create table terra_forragem (
+create table if not exists terra_forragem (
     id integer primary key,
     tipo_forragem integer,
     info_propriedade integer,
@@ -81,7 +81,7 @@ create table terra_forragem (
     foreign key (info_propriedade) references info_propriedade(id)
 );
 
-create table animal (
+create table if not exists animal (
     id integer primary key,
     propriedade integer,
     identificacao text,
@@ -92,7 +92,7 @@ create table animal (
     foreign key (propriedade) references propriedade(id)
 );
 
-create table morte (
+create table if not exists morte (
     id integer primary key,
     animal integer,
     data integer,
@@ -100,7 +100,7 @@ create table morte (
     foreign key (animal) references animal(id)
 );
 
-create table parto (
+create table if not exists parto (
     id integer primary key,
     mae integer,
     bezerro integer,
@@ -111,7 +111,7 @@ create table parto (
     foreign key (bezerro) references animal(id)
 );
 
-create table compra_animal (
+create table if not exists compra_animal (
     id integer primary key,
     animal integer,
     data integer,
@@ -121,7 +121,7 @@ create table compra_animal (
     foreign key (animal) references animal(id)
 );
 
-create table venda_animal (
+create table if not exists venda_animal (
     id integer primary key,
     animal integer,
     data integer,
@@ -131,7 +131,7 @@ create table venda_animal (
     foreign key (animal) references animal(id)
 );
 
-create table inseminacao (
+create table if not exists inseminacao (
     id integer primary key,
     touro integer,
     vaca integer,
@@ -140,7 +140,7 @@ create table inseminacao (
     foreign key (vaca) references animal(id)
 );
 
-create table prenhez (
+create table if not exists prenhez (
     id integer primary key,
     vaca integer,
     touro integer,
@@ -152,7 +152,7 @@ create table prenhez (
     foreign key (touro) references animal(id)
 );
 
-create table mastite (
+create table if not exists mastite (
     id integer primary key,
     animal integer,
     data integer,
@@ -164,7 +164,7 @@ create table mastite (
     foreign key (animal) references animal(id)
 );
 
-create table tratamento (
+create table if not exists tratamento (
     id integer primary key,
     animal integer,
     medicamento integer,
@@ -174,14 +174,14 @@ create table tratamento (
     foreign key (medicamento) references medicamento(id)
 );
 
-create table medicamento (
+create table if not exists medicamento (
     id integer primary key,
     principio_ativo text,
     nome text,
     forma_de_aplicacao text
 );
 
-create table doenca (
+create table if not exists doenca (
     id integer primary key,
     animal integer,
     data_diagnostico integer,
