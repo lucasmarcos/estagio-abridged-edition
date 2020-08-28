@@ -1,4 +1,6 @@
 .yarn
+client/www/js
+client/www/css
 db/db.db
 .pnp.js
 .yarnrc.yml

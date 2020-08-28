@@ -2,5 +2,13 @@
   "dependencies": {
     "express": "^4.17.1",
     "sqlite3": "^5.0.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.11.4",
+    "@babel/preset-react": "^7.10.4"
+  },
+  "babel": {
+    "presets": [ "@babel/preset-react" ]
   }
 }

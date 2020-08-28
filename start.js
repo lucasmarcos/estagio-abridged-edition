@@ -10,13 +10,11 @@ fs.readFile("db/schema.sql", "utf-8", (error, schema) => {
   if(error) console.log(error);
 });
 
-app.get("/", (req, res) => {
-  res.send("hi!");
-});
-
 app.get("/api", (req, res) => {
   res.json({status: "ok"});
 });
+
+app.use("/", express.static("client/www"));
 
 const port = "3030";
 app.listen(port, () => {
