@@ -11,11 +11,19 @@ fs.readFile("db/schema.sql", "utf-8", (error, schema) => {
 });
 
 ((app) => {
-  const lista_de_usuarios = [
-    { "id": "0", "nome": "usuario_0" },
-    { "id": "1", "nome": "usuario_1" },
-    { "id": "2", "nome": "usuario_2" }
-  ];
+  const lista_de_usuarios = [...Array(10).keys()].map(id => ({
+    "id": id,
+    "nome": `usuario_${id}`,
+    "cpf": `cpf_${id}`,
+    "cidade": `cidade_${id}`,
+    "bairro": `bairro_${id}`,
+    "numero": `numero_${id}`,
+    "cep": `cep_${id}`,
+    "telefone": `telefone_${id}`,
+    "email": `email_${id}`,
+    "tipo": `tipo_${id}`,
+    "verificado": false
+  }));
 
   app.get("/api/usuarios", (_, res) => {
     res.json(lista_de_usuarios);
@@ -28,28 +36,33 @@ fs.readFile("db/schema.sql", "utf-8", (error, schema) => {
 })(app);
 
 ((app) => {
-  const lista_de_tecnicos = [
-    { "id": "0", "nome": "tecnico_0" },
-    { "id": "1", "nome": "tecnico_1" },
-    { "id": "2", "nome": "tecnico_2" }
-  ];
+  const lista_de_tecnicos = [...Array(10).keys()].map(id => ({
+    "id": id,
+    "ano_formatura": id,
+    "tipo": `tipo_tec_${id}`,
+    "registro_profissional": `registro_profissional_${id}`
+  }));
 
   app.get("/api/tecnicos", (_, res) => {
     res.json(lista_de_tecnicos);
   });
 
-  app.get("/api/usuario/:id", (req, res) => {
+  app.get("/api/tecnico/:id", (req, res) => {
     const id = req.params.id;
     res.json(lista_de_tecnicos[id]);
   });
 })(app);
 
 ((app) => {
-  const lista_de_propriedades = [
-    { "id": "0", "nome": "propriedade_0" },
-    { "id": "1", "nome": "propriedade_1" },
-    { "id": "2", "nome": "propriedade_2" }
-  ];
+  const lista_de_propriedades = [...Array(10).keys()].map(id => ({
+    "id": id,
+    "proprietario": id,
+    "nome": `nome_${id}`,
+    "longitude": id,
+    "latitude": id,
+    "data_inicio": id,
+    "data_proxima": id
+  }));
 
   app.get("/api/propriedades", (_, res) => {
     res.json(lista_de_propriedades);
@@ -62,11 +75,15 @@ fs.readFile("db/schema.sql", "utf-8", (error, schema) => {
 })(app);
 
 ((app) => {
-  const lista_de_animais = [
-    { "id": "0", "nome": "animal_0" },
-    { "id": "1", "nome": "animal_1" },
-    { "id": "2", "nome": "animal_2" }
-  ];
+  const lista_de_animais = [...Array(10).keys()].map(id => ({
+    "id": id,
+    "propriedade": id,
+    "identificacao": `identificacao_${id}`,
+    "sexo": (id % 2 === 0) ? "f" : "m",
+    "peso": id * 45.1,
+    "status": `raca_${id}`,
+    "status": `identificacao_${id}`
+  }));
 
   app.get("/api/animais", (_, res) => {
     res.json(lista_de_animais);
