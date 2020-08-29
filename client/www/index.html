@@ -1,16 +1,25 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
     <title>iapar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
-    <h1>iapar</h1>
-    <div id="container"></div>
+    <div class="container">
+      <div class="columns">
+        <div class="column col-2"></div>
+        <div class="column col-8">
+          <h1>iapar</h1>
+          <div id="root"></div>
+        </div>
+        <div class="column col-2"></div>
+      </div>
+    </div>
 
-    <script src="https://unpkg.com/react/umd/react.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/react/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
     <script src="/js/main.js"></script>
 
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css">
   </body>
 </html>

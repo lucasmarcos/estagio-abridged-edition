@@ -22,16 +22,21 @@ fs.readFile("db/schema.sql", "utf-8", (error, schema) => {
     "telefone": `telefone_${id}`,
     "email": `email_${id}`,
     "tipo": `tipo_${id}`,
-    "verificado": false
+    "verificado": ((id % 3) == 0)
   }));
 
   app.get("/api/usuarios", (_, res) => {
-    res.json(lista_de_usuarios);
+    const lista = lista_de_usuarios.map(usuario => ({
+      "id": usuario.id,
+      "nome": usuario.nome,
+      "cpf": usuario.cpf,
+      "email": usuario.email
+    }));
+    res.json(lista);
   });
 
   app.get("/api/usuario/:id", (req, res) => {
-    const id = req.params.id;
-    res.json(lista_de_usuarios[id]);
+    res.json(lista_de_usuarios[req.params.id]);
   });
 })(app);
 
