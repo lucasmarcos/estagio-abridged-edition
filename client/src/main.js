@@ -1,11 +1,6 @@
 const Usuarios = () => {
   const [listaDeUsuarios, setListaDeUsuarios] = React.useState([]);
-
-  const select = (id) => {
-    const clone = [...listaDeUsuarios];
-    clone[id].selected = !clone[id].selected;
-    setListaDeUsuarios(clone);
-  };
+  const [usuarioSelecionado, setUsuarioSelecionado] = React.useState(null);
 
   React.useEffect(() => {
     fetch("/api/usuarios")
@@ -13,27 +8,32 @@ const Usuarios = () => {
     .then(json => setListaDeUsuarios(json))
   }, []);
 
-  return (
-    <div>
+  if(usuarioSelecionado !== null) {
+    return <Usuario id={usuarioSelecionado} voltar={() => setUsuarioSelecionado(null)}/>
+  } else {
+    return <ListaDeUsuarios usuarios={listaDeUsuarios} selecionarUsuario={(id) => setUsuarioSelecionado(id)}/>
+  }
+};
 
-    <h1>usuários</h1>
-
+const ListaDeUsuarios = ({usuarios, selecionarUsuario}) =>
+  (<div>
+    <h1>Usuários</h1>
     <table>
       <thead>
         <tr>
-          <td>nome</td>
-          <td>cpf</td>
-          <td>cidade</td>
-          <td>bairro</td>
-          <td>numero</td>
-          <td>cep</td>
-          <td>telefone</td>
-          <td>email</td>
+          <td>Nome</td>
+          <td>CPF</td>
+          <td>Cidade</td>
+          <td>Bairro</td>
+          <td>Número</td>
+          <td>CEP</td>
+          <td>Telefone</td>
+          <td>e-mail</td>
         </tr>
       </thead>
       <tbody>
-        {listaDeUsuarios.map(usuario =>
-          <tr key={usuario.id} className={usuario.selected ? "selected" : ""} onClick={() => select(usuario.id)}>
+        {usuarios.map(usuario =>
+          <tr key={usuario.id} onClick={() => selecionarUsuario(usuario.id)}>
             <td>{usuario.nome}</td>
             <td>{usuario.cpf}</td>
             <td>{usuario.cidade}</td>
@@ -47,9 +47,15 @@ const Usuarios = () => {
       </tbody>
     </table>
 
-    </div>
-  );
-};
+    <button>adicionar</button>
+  </div>);
+
+const Usuario = ({id, voltar}) =>
+  (<div>
+    <h1>Usuário #{id}</h1>
+    <button>remover</button>
+    <button onClick={() => voltar()}>voltar</button>
+  </div>);
 
 const Tecnicos = () => {
   const [listaDeTecnicos, setListaDeTecnicos] = React.useState([]);
@@ -169,16 +175,13 @@ const Animais = () => {
   );
 };
 
-const Componente = () => {
-  return (
-    <div>
+const Componente = () =>
+  (<div>
       <Usuarios/>
       <Tecnicos/>
       <Propriedades/>
       <Animais/>
-    </div>
- );
-};
+  </div>);
 
 const container = document.getElementById("container");
 ReactDOM.render(<Componente/>, container);
