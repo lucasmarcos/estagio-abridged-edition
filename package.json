@@ -12,5 +12,10 @@
     "presets": [
       "@babel/preset-react"
     ]
+  },
+  "scripts": {
+    "preprocess-client": "babel ./client/src/ --out-dir ./client/www/js/",
+    "preprocess-client-watch": "babel -w ./client/src/ --out-dir ./client/www/js/",
+    "serve": "node ./start.js"
   }
 }

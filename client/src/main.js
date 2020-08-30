@@ -5,8 +5,8 @@ const Usuarios = () => {
 
   React.useEffect(() => {
     fetch("/api/usuarios")
-    .then(res => res.json())
-    .then(json => setListaDeUsuarios(json))
+      .then(res => res.json())
+      .then(json => setListaDeUsuarios(json))
   }, []);
 
   if(usuarioSelecionado !== null) {
@@ -32,11 +32,11 @@ const ListaDeUsuarios = ({usuarios, selecionarUsuario, adicionarUsuario}) =>
       </thead>
       <tbody>
         {usuarios.map(usuario =>
-          <tr key={usuario.id} onClick={() => selecionarUsuario(usuario.id)}>
-            <td>{usuario.nome}</td>
-            <td>{usuario.cpf}</td>
-            <td>{usuario.email}</td>
-          </tr>
+        <tr key={usuario.id} onClick={() => selecionarUsuario(usuario.id)}>
+          <td>{usuario.nome}</td>
+          <td>{usuario.cpf}</td>
+          <td>{usuario.email}</td>
+        </tr>
         )}
       </tbody>
     </table>
@@ -52,8 +52,8 @@ const Usuario = ({id, voltar}) => {
 
   React.useEffect(() => {
     fetch(`/api/usuario/${id}`)
-    .then(res => res.json())
-    .then(json => setUsuario(json))
+      .then(res => res.json())
+      .then(json => setUsuario(json))
   }, []);
 
   return (
@@ -77,8 +77,8 @@ const Usuario = ({id, voltar}) => {
       <br></br>
       <button>remover</button>
       <button onClick={() => voltar()}>voltar</button>
-  </div>
-)};
+    </div>
+  )};
 
 const AdicionarUsuario = ({voltar}) => {
   const [nome, setNome] = React.useState("");
@@ -145,34 +145,31 @@ const Tecnicos = () => {
 
   React.useEffect(() => {
     fetch("/api/tecnicos")
-    .then(res => res.json())
-    .then(json => setListaDeTecnicos(json))
+      .then(res => res.json())
+      .then(json => setListaDeTecnicos(json))
   }, []);
 
   return (
     <div>
-
-    <h1>técnicos</h1>
-
-    <table>
-    <thead>
-        <tr>
-          <td>ano de formatura</td>
-          <td>tipo</td>
-          <td>registro profissional</td>
-        </tr>
-      </thead>
-      <tbody>
-        {listaDeTecnicos.map(tecnico =>
+      <h1>técnicos</h1>
+      <table>
+        <thead>
+          <tr>
+            <td>ano de formatura</td>
+            <td>tipo</td>
+            <td>registro profissional</td>
+          </tr>
+        </thead>
+        <tbody>
+          {listaDeTecnicos.map(tecnico =>
           <tr key={tecnico.id}>
             <td>{tecnico.ano_formatura}</td>
             <td>{tecnico.tipo}</td>
             <td>{tecnico.registro_profissional}</td>
           </tr>
-        )}
-      </tbody>
-    </table>
-
+          )}
+        </tbody>
+      </table>
     </div>
   );
 };
@@ -182,28 +179,26 @@ const Propriedades = () => {
 
   React.useEffect(() => {
     fetch("/api/propriedades")
-    .then(res => res.json())
-    .then(json => setlistaDePropriedades(json))
+      .then(res => res.json())
+      .then(json => setlistaDePropriedades(json))
   }, []);
 
   return (
     <div>
+      <h1>propriedades</h1>
+      <table>
+        <thead>
+          <tr>
+            <td>nome</td>
+            <td>longitude</td>
+            <td>latitude</td>
+            <td>data de inicio</td>
+            <td>data da próxima</td>
+          </tr>
+        </thead>
 
-    <h1>propriedades</h1>
-
-    <table>
-    <thead>
-      <tr>
-        <td>nome</td>
-         <td>longitude</td>
-         <td>latitude</td>
-         <td>data de inicio</td>
-         <td>data da próxima</td>
-        </tr>
-      </thead>
-
-      <tbody>
-        {listaDePropriedades.map(propriedade =>
+        <tbody>
+          {listaDePropriedades.map(propriedade =>
           <tr key={propriedade.id}>
             <td>{propriedade.nome}</td>
             <td>{propriedade.longitude}</td>
@@ -211,9 +206,9 @@ const Propriedades = () => {
             <td>{propriedade.data_inicio}</td>
             <td>{propriedade.data_proxima}</td>
           </tr>
-        )}
-      </tbody>
-    </table>
+          )}
+        </tbody>
+      </table>
 
     </div>
   );
@@ -224,46 +219,43 @@ const Animais = () => {
 
   React.useEffect(() => {
     fetch("/api/animais")
-    .then(res => res.json())
-    .then(json => setlistaDeAnimais(json))
+      .then(res => res.json())
+      .then(json => setlistaDeAnimais(json))
   }, []);
 
   return (
     <div>
-
-    <h1>animais</h1>
-
-    <table>
-    <thead>
-        <tr>
-          <td>identificação</td>
-          <td>sexo</td>
-          <td>peso</td>
-          <td>status</td>
-        </tr>
-      </thead>
-      <tbody>
-        {listaDeAnimais.map(animal =>
+      <h1>animais</h1>
+      <table>
+        <thead>
+          <tr>
+            <td>identificação</td>
+            <td>sexo</td>
+            <td>peso</td>
+            <td>status</td>
+          </tr>
+        </thead>
+        <tbody>
+          {listaDeAnimais.map(animal =>
           <tr key={animal.id}>
             <td>{animal.identificacao}</td>
             <td>{animal.sexo}</td>
             <td>{animal.peso}</td>
             <td>{animal.status}</td>
           </tr>
-        )}
-      </tbody>
-    </table>
-
+          )}
+        </tbody>
+      </table>
     </div>
   );
 };
 
 const Componente = () =>
   (<div>
-      <Usuarios/>
-      <Tecnicos/>
-      <Propriedades/>
-      <Animais/>
+    <Usuarios/>
+    <Tecnicos/>
+    <Propriedades/>
+    <Animais/>
   </div>);
 
 const container = document.getElementById("root");
