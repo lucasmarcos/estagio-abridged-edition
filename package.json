@@ -1,0 +1,7 @@
+{
+	"devDependencies": {
+		"better-sqlite3": "*",
+		"fastify": "*",
+		"fastify-static": "*"
+	}
+}

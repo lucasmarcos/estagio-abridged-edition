@@ -1,0 +1,2 @@
+curl -LO https://unpkg.com/react/umd/react.development.js
+curl -LO https://unpkg.com/react-dom/umd/react-dom.development.js
