@@ -1,18 +1,20 @@
 {
 	"devDependencies": {
-		"@babel/cli": "^7.11.5",
-		"@babel/core": "^7.11.5",
-		"@babel/preset-react": "^7.10.4",
+		"@babel/cli": "*",
+		"@babel/core": "*",
+		"@babel/preset-react": "*",
 		"better-sqlite3": "*",
 		"fastify": "*",
 		"fastify-static": "*"
-  },
-  "scripts": {
-    "pre": "babel ./client/src/ --out-dir ./client/www/js/",
-    "watch": "babel --watch ./client/src/ --out-dir ./client/www/js/",
-    "server": "node ./main.js"
-  },
-  "babel": {
-    "presets": [ "@babel/preset-react" ]
-  }
+	},
+	"scripts": {
+		"pre": "babel ./client/src/ --out-dir ./client/www/js/",
+		"watch": "babel --watch ./client/src/ --out-dir ./client/www/js/",
+		"server": "node ./main.js"
+	},
+	"babel": {
+		"presets": [
+			"@babel/preset-react"
+		]
+	}
 }

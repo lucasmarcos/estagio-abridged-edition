@@ -9,6 +9,8 @@ const RootContainer = () => {
       <h2>h2</h2>
       <h3>h3</h3>
       <Animal/>
+      <Propriedade/>
+      <Proprietario/>
     </React.Fragment>
   );
 }
