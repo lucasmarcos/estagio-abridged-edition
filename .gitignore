@@ -3,3 +3,5 @@ db.db
 .pnp.js
 .yarnrc.yml
 yarn.lock
+client/www/js
+!client/links.txt
