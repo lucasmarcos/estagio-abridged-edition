@@ -4,4 +4,4 @@ db.db
 .yarnrc.yml
 yarn.lock
 client/www/js
-!client/links.txt
+!client/www/js/links.txt
