@@ -33,6 +33,30 @@ const CREATE_TABLE_ANIMAL = `
   );
 `;
 
+exports.SELECT_EVERY_ANIMAL = `
+  SELECT id, identificacao, peso, sexo, propriedade
+  FROM animal;
+`;
+
+exports.SELECT_ANIMAL_WHERE_ID = `
+  SELECT id, identificacao, peso, sexo, propriedade
+  FROM animal
+  WHERE id = ?;
+`;
+
+exports.INSERT_ANIMAL = `
+  INSERT INTO animal (
+    identificacao, peso, sexo, propriedade
+  ) VALUES (
+    ?, ?, ?, ?
+  );
+`;
+
+exports.DELETE_ANIMAL_WHERE_ID = `
+  DELETE FROM animal
+  WHERE id = ?;
+`;
+
 const EXEMPLE_DATA = `
   INSERT INTO
     proprietario (id, nome, cnpj)
